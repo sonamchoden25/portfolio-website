@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Sonam Choden | Portfolio</title>
+
+  <style>
+
+    :root {
+      --sky: #DFEEFD;
+      --red: #D40F2D;
+      --navy: #173E63;
+      --white: #ffffff;
+      --hill: #7a9f00;
+      --hill-light: #b5d46c;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--sky);
+      color: var(--navy);
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+      line-height: 1.5;
+    }
+
+    body.page-home #projects-page,
+    body.page-home #experience-page,
+    body.page-home #contact-page {
+      display: none;
+    }
+
+    body.page-projects #home-page,
+    body.page-projects #experience-page,
+    body.page-projects #contact-page {
+      display: none;
+    }
+
+    body.page-experience #home-page,
+    body.page-experience #projects-page,
+    body.page-experience #contact-page {
+      display: none;
+    }
+
+    body.page-contact #home-page,
+    body.page-contact #projects-page,
+    body.page-contact #experience-page {
+      display: none;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Georgia, "Times New Roman", serif !important;
+      color: var(--red);
+      font-weight: 700;
+      line-height: 0.92;
+    }
+
+    h1 {
+      font-size: clamp(4.4rem, 11vw, 8rem);
+      letter-spacing: -0.08em;
+      max-width: 520px;
+    }
+
+    h2 {
+      font-size: clamp(2.35rem, 5vw, 4rem);
+      letter-spacing: -0.035em;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    p,
+    li {
+      font-size: 1rem;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page-shell {
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: flex-end;
+      padding: 2.1rem 4.5rem 1rem;
+      pointer-events: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      background: rgba(223, 238, 253, 0.82);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      padding: 0.45rem 0.75rem;
+      pointer-events: auto;
+    }
+
+    .nav-links button {
+      border: 0;
+      background: transparent;
+      color: var(--navy);
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 0.35rem 0.5rem;
+      border-radius: 999px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .nav-links button:hover,
+    .nav-links button.active {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .divider {
+      color: var(--navy);
+      opacity: 0.65;
+    }
+
+    .home-hero {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 7.2rem 4.5rem 4.8rem;
+      display: grid;
+      grid-template-columns: 1fr minmax(320px, 470px);
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .hero-left {
+      padding-top: 0.8rem;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      align-items: center;
+    }
+
+    .social-icons a {
+      width: 34px;
+      height: 34px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--navy);
+      text-decoration: none;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .social-icons svg {
+      width: 30px;
+      height: 30px;
+      fill: currentColor;
+    }
+
+    .social-icons a:hover {
+      color: var(--red);
+      transform: translateY(-3px);
+    }
+
+    .hero-summary {
+      max-width: 470px;
+      margin-top: 4rem;
+      font-size: 1.05rem;
+    }
+
+    .portrait-card {
+      width: 100%;
+      aspect-ratio: 0.78;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      box-shadow: 0 18px 45px rgba(23, 62, 99, 0.11);
+    }
+
+    .section-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2rem 4.5rem 4.5rem;
+    }
+
+    .section-heading-line-left {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 3.8rem;
+    }
+
+    .section-heading-line-left::after {
+      content: "";
+      height: 1px;
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .section-heading-centered {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 4rem;
+      text-align: center;
+    }
+
+    .section-heading-centered::before,
+    .section-heading-centered::after {
+      content: "";
+      height: 1px;
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 3rem 4rem;
+      text-align: center;
+    }
+
+    .tech-item {
+      display: grid;
+      gap: 0.6rem;
+      justify-items: center;
+      color: var(--navy);
+    }
+
+    .tech-logo {
+      width: 76px;
+      height: 76px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .tech-item span {
+      font-size: 0.92rem;
+    }
+
+    .center-button {
+      display: flex;
+      justify-content: center;
+      margin-top: 3.8rem;
+    }
+
+    .pill-button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      border: 2px solid var(--navy);
+      color: var(--red);
+      background: transparent;
+      padding: 0.7rem 1.7rem;
+      border-radius: 999px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .pill-button:hover {
+      background: var(--navy);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .featured {
+      padding-top: 4rem;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(260px, 1fr));
+      gap: 2.4rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .project-summary-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .project-image {
+      width: 100%;
+      aspect-ratio: 1.75;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-summary-card p {
+      min-height: 120px;
+      margin-bottom: 0.85rem;
+    }
+
+    .small-button-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: auto;
+    }
+
+    .sub-page {
+      min-height: 100vh;
+      padding-top: 6.8rem;
+    }
+
+    .details-page,
+    .experience-page,
+    .contact-page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 5rem 4.5rem;
+    }
+
+    .project-detail {
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      gap: 2rem;
+      align-items: stretch;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(23, 62, 99, 0.18);
+    }
+
+    .experience-detail {
+      display: block;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(23, 62, 99, 0.18);
+    }
+
+    .project-detail:last-child,
+    .experience-detail:last-child {
+      border-bottom: 1px solid rgba(23, 62, 99, 0.18);
+    }
+
+    .detail-card {
+      background: rgba(255, 255, 255, 0.36);
+      border: 1px solid rgba(23, 62, 99, 0.12);
+      border-radius: 24px;
+      padding: 1.5rem;
+    }
+
+    .detail-card ul {
+      margin-left: 1.2rem;
+      margin-top: 0.8rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      border: 1px solid var(--navy);
+      border-radius: 999px;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.85rem;
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    .certifications {
+      margin-top: 4.5rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(23, 62, 99, 0.18);
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+      margin-top: 1.8rem;
+    }
+
+    .cert-card {
+      background: rgba(255, 255, 255, 0.38);
+      border: 1px solid rgba(23, 62, 99, 0.14);
+      border-radius: 24px;
+      padding: 1.4rem;
+    }
+
+    .contact-hero-card {
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+      align-items: stretch;
+    }
+
+    .contact-card-item {
+      display: grid;
+      justify-items: center;
+      align-content: center;
+      gap: 0.75rem;
+      min-height: 130px;
+      padding: 1.2rem;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.48);
+      border: 1px solid rgba(23, 62, 99, 0.12);
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(23, 62, 99, 0.06);
+      text-align: center;
+    }
+
+    .contact-label {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--red);
+      font-size: 1.45rem;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: var(--navy);
+      color: var(--sky);
+      flex-shrink: 0;
+    }
+
+    .contact-icon svg {
+      width: 30px;
+      height: 30px;
+      fill: currentColor;
+    }
+
+    .contact-copy {
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    .contact-value {
+      display: none;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(23, 62, 99, 0.16);
+    }
+
+    @media (max-width: 900px) {
+      .site-nav {
+        justify-content: center;
+        padding: 1rem;
+      }
+
+      .nav-links {
+        gap: 0.35rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .home-hero,
+      .featured-grid,
+      .project-detail,
+      .contact-hero-card,
+      .cert-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .home-hero,
+      .section-wrap,
+      .details-page,
+      .experience-page,
+      .contact-page {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      .home-hero {
+        padding-top: 6.5rem;
+        gap: 3rem;
+      }
+
+      .hero-summary {
+        margin-top: 3rem;
+      }
+
+      .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section-heading-centered,
+      .section-heading-line-left {
+        gap: 1rem;
+      }
+    }
+
+  </style>
+
+</head>
+
+<body class="page-home">
+
+  <div class="page-shell">
+
+    <nav class="site-nav" aria-label="Main navigation">
+
+      <div class="nav-links">
+
+        <button class="active" data-page="home">Home</button>
+
+        <span class="divider">|</span>
+
+        <button data-page="projects">Projects</button>
+
+        <span class="divider">|</span>
+
+        <button data-page="experience">Experience</button>
+
+        <span class="divider">|</span>
+
+        <button data-page="contact">Contact</button>
+
+      </div>
+
+    </nav>
+
+    <main>
+
+      <div id="home-page">
+
+        <header class="home-hero" id="home">
+
+          <div class="hero-left">
+
+            <h1>SONAM<br>CHODEN</h1>
+
+            <div class="social-icons" aria-label="Social links">
+
+              <a href="mailto:sonamc101@icloud.com" aria-label="Email">
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+
+                  <path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 8.2L4.6 7H4v10h16V7h-.6L12 13.2ZM6.1 7 12 11.9 17.9 7H6.1Z"/>
+
+                </svg>
+
+              </a>
+
+              <a href="https://github.com/sonamchoden25" target="_blank" aria-label="GitHub">
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+
+                  <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.61-3.37-1.19-3.37-1.19-.45-1.16-1.1-1.47-1.1-1.47-.9-.62.07-.61.07-.61 1 .07 1.53 1.05 1.53 1.05.89 1.52 2.33 1.08 2.9.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.12-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.28.1-2.65 0 0 .84-.27 2.75 1.03A9.43 9.43 0 0 1 12 6.99c.85 0 1.7.11 2.5.34 1.9-1.3 2.74-1.03 2.74-1.03.55 1.37.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.86V21c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/>
+
+                </svg>
+
+              </a>
+
+              <a href="https://www.linkedin.com/in/sonam-choden-9aa562230/" target="_blank" aria-label="LinkedIn">
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+
+                  <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5ZM3 9.5h4v11H3v-11Zm6.25 0h3.84v1.5h.06c.53-.95 1.84-1.95 3.78-1.95 4.04 0 4.79 2.66 4.79 6.12v5.33h-4v-4.73c0-1.13-.02-2.58-1.57-2.58-1.58 0-1.82 1.23-1.82 2.5v4.81h-4V9.5Z"/>
+
+                </svg>
+
+              </a>
+
+            </div>
+
+            <p class="hero-summary">
+              Transforming raw data into actionable insights through modern data engineering practices, cloud technologies, and distributed systems. Let's build something amazing together.
+            </p>
+
+          </div>
+
+          <img class="portrait-card" src="assets/images/profile.JPG" alt="Portrait of Sonam Choden">
+
+        </header>
+
+        <section class="section-wrap" aria-label="Tech stack">
+
+          <div class="section-heading-line-left">
+
+            <h2>TECH STACK</h2>
+
+          </div>
+
+          <div class="tech-grid">
+
+            <div class="tech-item">
+
+              <img class="tech-logo" src="assets/logos/python.png" alt="Python icon">
+
+              <span>Python</span>
+
+            </div>
+
+            <div class="tech-item">
+
+              <img class="tech-logo" src="assets/logos/sql.png" alt="SQL icon">
+
+              <span>SQL</span>
+
+            </div>
+
+            <div class="tech-item">
+
+              <img class="tech-logo" src="assets/logos/apache-spark.png" alt="Apache Spark icon">
+
+              <span>Apache Spark</span>
+
+            </div>
+
+            <div class="tech-item">
+
+              <img class="tech-logo" src="assets/logos/databricks.png" alt="Databricks icon">
+
+              <span>Databricks</span>
+
+            </div>
+
+            <div class="tech-item">
+
+              <img class="tech-logo" src="assets/logos/snowflake.png" alt="Snowflake icon">
+
+              <span>Snowflake</span>
+
+            </div>
+
+            <div class="tech-item">
+
+              <img class="tech-logo" src="assets/logos/devops.png" alt="DevOps icon">
+
+              <span>DevOps</span>
+
+            </div>
+
+            <div class="tech-item">
+
+              <img class="tech-logo" src="assets/logos/azure.png" alt="Azure icon">
+
+              <span>Azure</span>
+
+            </div>
+
+            <div class="tech-item">
+
+              <img class="tech-logo" src="assets/logos/aws.png" alt="AWS icon">
+
+              <span>AWS</span>
+
+            </div>
+
+            <div class="tech-item">
+
+              <img class="tech-logo" src="assets/logos/power-bi.png" alt="Power BI icon">
+
+              <span>Power BI</span>
+
+            </div>
+
+            <div class="tech-item">
+
+              <img class="tech-logo" src="assets/logos/git.png" alt="Git icon">
+
+              <span>Git</span>
+
+            </div>
+
+          </div>
+
+          <div class="center-button">
+
+            <button class="pill-button" data-page="experience" data-target="certifications">
+
+              View Skills and Certifications
+
+            </button>
+
+          </div>
+
+        </section>
+
+        <section class="section-wrap featured" aria-label="Featured project summaries">
+
+          <div class="section-heading-centered">
+
+            <h2>FEATURED PROJECTS</h2>
+
+          </div>
+
+          <div class="featured-grid">
+
+            <article class="project-summary-card">
+
+              <img class="project-image" src="assets/images/nlp.avif" alt="NLP job listing classifier project preview">
+
+              <h3>JOB LISTING CLASSIFIER</h3>
+
+              <p>
+                A beginner-friendly NLP project that classifies job postings as direct employer listings or recruitment/consultancy listings using rules and machine learning.
+              </p>
+
+              <div class="small-button-wrap">
+
+                <button class="pill-button" data-page="projects" data-target="job-classifier">READ MORE</button>
+
+              </div>
+
+            </article>
+
+            <article class="project-summary-card">
+
+              <img class="project-image" src="assets/images/mini-pipeline.webp" alt="Mini data pipeline project preview">
+
+              <h3>MINI DATA PIPELINE</h3>
+
+              <p>
+                A small data engineering project that extracts, cleans, transforms, and stores data before producing a simple dashboard-ready output.
+              </p>
+
+              <div class="small-button-wrap">
+
+                <button class="pill-button" data-page="projects" data-target="data-pipeline">READ MORE</button>
+
+              </div>
+
+            </article>
+
+          </div>
+
+        </section>
+
+      </div>
+
+      <div id="projects-page" class="sub-page">
+
+        <section class="details-page" id="projects" aria-label="Projects page">
+
+          <div class="section-heading-line-left">
+
+            <h2>PROJECTS</h2>
+
+          </div>
+
+          <article class="project-detail" id="job-classifier">
+
+            <img class="project-image" src="assets/images/nlp.avif" alt="NLP job listing classifier project preview">
+
+            <div class="detail-card">
+
+              <h3>JOB LISTING CLASSIFIER</h3>
+
+              <p>
+                Placeholder project idea: Built a Python-based classifier to identify whether job postings are from direct employers or recruitment/consultancy/job board sources.
+              </p>
+
+              <ul>
+
+                <li><strong>What was done:</strong> Cleaned text data, engineered keyword-based features, and tested a simple TF-IDF model.</li>
+
+                <li><strong>Tech used:</strong> Python, pandas, scikit-learn, TF-IDF, Git.</li>
+
+                <li><strong>Achievement:</strong> Created a practical workflow for reducing noisy listings and improving job market analysis.</li>
+
+              </ul>
+
+              <div class="tag-list">
+
+                <span class="tag">Python</span>
+
+                <span class="tag">NLP</span>
+
+                <span class="tag">Machine Learning</span>
+
+              </div>
+
+            </div>
+
+          </article>
+
+          <article class="project-detail" id="data-pipeline">
+
+            <img class="project-image" src="assets/images/mini-pipeline.webp" alt="Mini data pipeline project preview">
+
+            <div class="detail-card">
+
+              <h3>MINI DATA PIPELINE</h3>
+
+              <p>
+                Built a small end-to-end pipeline that ingests raw CSV data, validates it, transforms it, and stores clean outputs for reporting.
+              </p>
+
+              <ul>
+
+                <li><strong>What was done:</strong> Created extract, transform, and load steps with logging and basic error handling.</li>
+
+                <li><strong>Tech used:</strong> Apache Spark, Databricks, Declarative Pipelines.</li>
+
+                <li><strong>Achievement:</strong> Demonstrated core data engineering thinking using a simple but realistic workflow.</li>
+
+              </ul>
+
+              <div class="tag-list">
+
+                <span class="tag">Apache Spark</span>
+
+                <span class="tag">Databricks</span>
+
+                <span class="tag">Declarative Pipelines</span>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        </section>
+
+      </div>
+
+      <div id="experience-page" class="sub-page">
+
+        <section class="experience-page" aria-label="Experience page">
+
+          <div class="section-heading-line-left">
+
+            <h2>EXPERIENCE</h2>
+
+          </div>
+
+          <article class="experience-detail">
+
+            <div class="detail-card">
+
+              <h3>DATA CONSULTANT TRAINING</h3>
+
+              <p><strong>Kubrick Group · Modern Data Platforms</strong></p>
+
+              <ul>
+
+                <li>Completed training across Python, SQL, Databricks, Spark, Delta Lake, Power BI, and cloud-native data engineering.</li>
+
+                <li>Built hands-on skills in ETL pipeline design, data modelling, and production-aware Python development.</li>
+
+                <li>Worked in agile project teams and contributed to internal deliverables.</li>
+
+              </ul>
+
+              <div class="tag-list">
+
+                <span class="tag">Python</span>
+
+                <span class="tag">SQL</span>
+
+                <span class="tag">Databricks</span>
+
+              </div>
+
+            </div>
+
+          </article>
+
+          <article class="experience-detail">
+
+            <div class="detail-card">
+
+              <h3>RESEARCH LAB PLACEMENT</h3>
+
+              <p><strong>Biology / Pharmacology Research</strong></p>
+
+              <ul>
+
+                <li>Developed wet-lab and analytical skills including western blotting, RT-qPCR, ELISA, microscopy, and image analysis.</li>
+
+                <li>Used data analysis to interpret experimental results and communicate findings clearly.</li>
+
+                <li>Built a strong foundation in scientific problem-solving and evidence-based thinking.</li>
+
+              </ul>
+
+              <div class="tag-list">
+
+                <span class="tag">Research</span>
+
+                <span class="tag">Data Analysis</span>
+
+                <span class="tag">ImageJ</span>
+
+              </div>
+
+            </div>
+
+          </article>
+
+          <section class="certifications" id="certifications">
+
+            <div class="section-heading-line-left">
+
+              <h2>CERTIFICATIONS</h2>
+
+            </div>
+
+            <div class="cert-grid">
+
+              <!-- Add certification cards here later -->
+
+              <!-- Example:
+              <div class="cert-card">
+                <h3>Databricks Data Engineer Associate</h3>
+                <p>Add issue date, credential link, and a short note on the skills covered.</p>
+              </div>
+              -->
+
+            </div>
+
+          </section>
+
+        </section>
+
+      </div>
+
+      <div id="contact-page" class="sub-page">
+
+        <section class="contact-page" id="contact" aria-label="Contact page">
+
+          <div class="section-heading-line-left">
+
+            <h2>CONTACT</h2>
+
+          </div>
+
+          <div class="contact-hero-card">
+
+            <div class="contact-card-item">
+
+              <span class="contact-icon" aria-hidden="true">
+
+                <svg viewBox="0 0 24 24">
+
+                  <path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 8.2L4.6 7H4v10h16V7h-.6L12 13.2ZM6.1 7 12 11.9 17.9 7H6.1Z"/>
+
+                </svg>
+
+              </span>
+
+              <span class="contact-copy">
+
+                <span class="contact-label">Email</span>
+
+                <span class="contact-value">sonamc101@icloud.com</span>
+
+              </span>
+
+            </div>
+
+            <div class="contact-card-item">
+
+              <span class="contact-icon" aria-hidden="true">
+
+                <svg viewBox="0 0 24 24">
+
+                  <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.61-3.37-1.19-3.37-1.19-.45-1.16-1.1-1.47-1.1-1.47-.9-.62.07-.61.07-.61 1 .07 1.53 1.05 1.53 1.05.89 1.52 2.33 1.08 2.9.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.12-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.28.1-2.65 0 0 .84-.27 2.75 1.03A9.43 9.43 0 0 1 12 6.99c.85 0 1.7.11 2.5.34 1.9-1.3 2.74-1.03 2.74-1.03.55 1.37.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.86V21c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/>
+
+                </svg>
+
+              </span>
+
+              <span class="contact-copy">
+
+                <span class="contact-label">GitHub</span>
+
+                <span class="contact-value">github.com/sonamchoden25</span>
+
+              </span>
+
+            </div>
+
+            <div class="contact-card-item">
+
+              <span class="contact-icon" aria-hidden="true">
+
+                <svg viewBox="0 0 24 24">
+
+                  <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5ZM3 9.5h4v11H3v-11Zm6.25 0h3.84v1.5h.06c.53-.95 1.84-1.95 3.78-1.95 4.04 0 4.79 2.66 4.79 6.12v5.33h-4v-4.73c0-1.13-.02-2.58-1.57-2.58-1.58 0-1.82 1.23-1.82 2.5v4.81h-4V9.5Z"/>
+
+                </svg>
+
+              </span>
+
+              <span class="contact-copy">
+
+                <span class="contact-label">LinkedIn</span>
+
+                <span class="contact-value">linkedin.com/in/sonam-choden-9aa562230</span>
+
+              </span>
+
+            </div>
+
+            <div class="contact-card-item">
+
+              <span class="contact-icon" aria-hidden="true">
+
+                <svg viewBox="0 0 24 24">
+
+                  <path d="M6 2h8l5 5v15H6V2Zm7 1.8V8h4.2L13 3.8ZM8 11h8v2H8v-2Zm0 4h8v2H8v-2Zm0-8h3v2H8V7Z"/>
+
+                </svg>
+
+              </span>
+
+              <span class="contact-copy">
+
+                <span class="contact-label">CV</span>
+
+                <span class="contact-value">assets/Sonam-Choden-CV.pdf</span>
+
+              </span>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+    </main>
+
+    <footer class="footer">
+
+      <p>© 2026 Sonam Choden</p>
+
+    </footer>
+
+  </div>
+
+  <script>
+
+    const pageButtons = document.querySelectorAll("[data-page]");
+
+    function showPage(page, targetId) {
+
+      document.body.className = `page-${page}`;
+
+      pageButtons.forEach((button) => {
+
+        button.classList.toggle(
+          "active",
+          button.dataset.page === page && button.closest(".nav-links")
+        );
+
+      });
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      if (targetId) {
+
+        setTimeout(() => {
+
+          const target = document.getElementById(targetId);
+
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+
+        }, 120);
+
+      }
+
+    }
+
+    pageButtons.forEach((button) => {
+
+      button.addEventListener("click", () => {
+
+        showPage(button.dataset.page, button.dataset.target);
+
+      });
+
+    });
+
+  </script>
+
+</body>
+
+</html>
